@@ -9,8 +9,11 @@ jobs:
           name: Setup
           command: |
             apt-get update
-            apt-get install -y git sudo ansible locales
+            apt-get install -y sudo
+            sudo apt-get install -y git python-pip libpython-dev libssl-dev iproute2
+            sudo pip install ansible\==2.8.5
       - checkout
       - run:
           name: Execute Ansible playbook
+          # Test without -K option to make it non-interactive
           command: ansible-playbook -i hosts site.yml
