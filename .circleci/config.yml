@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  test:
     docker:
       - image: ubuntu:18.04
     steps:
@@ -14,6 +14,19 @@ jobs:
             sudo pip install ansible\==2.8.5
       - checkout
       - run:
-          name: Execute Ansible playbook
+          name: Execute ansible playbook
           # Test without -K option to make it non-interactive
           command: ansible-playbook -i hosts site.yml
+
+workflows:
+  version: 2
+  normal_test_workflow:
+    jobs:
+      - test
+  nightly_workflow:
+    triggers:
+      - schedule:
+          cron: "00 5 * * *"
+          # cron: "00 1 * * 1" # Every Monday at 1:00(UTC)
+    jobs:
+      - test
