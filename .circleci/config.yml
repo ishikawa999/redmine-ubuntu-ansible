@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Execute ansible playbook
           # Test without -K option to make it non-interactive
-          command: ansible-playbook -i -vvvv hosts site.yml
+          command: ansible-playbook -i hosts site.yml -v
 
 workflows:
   version: 2
