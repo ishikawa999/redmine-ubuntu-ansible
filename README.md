@@ -15,23 +15,26 @@ Ansibleを使ってRedmineを自動インストールするためのプレイブ
 
 ## システム構成
 
-* Redmine 3.4
-* Ubuntu Server 16.04.2 LTS
+* Ansible 2.8.5
+* Redmine 4.0
+* Ubuntu Server 18.04.3 LTS
 * PostgreSQL
 * Apache
+* Docker
 
 
 ## Redmineのインストール手順
 
-インストール直後の Ubuntu 16.04 にログインし以下の操作を行ってください。
+インストール直後の Ubuntu 18.04 にログインし以下の操作を行ってください。
 
 
 ### Ansibleとgitのインストール
 
 ```
-sudo apt-get update
-sudo apt-get install -y python-pip libpython-dev git libssl-dev
-sudo pip install ansible
+apt-get update
+apt-get install -y sudo
+sudo apt-get install -y python-pip libpython-dev git libssl-dev iproute2
+sudo pip install ansible\==2.8.5
 ```
 
 ### playbookのダウンロード
