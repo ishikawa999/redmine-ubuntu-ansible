@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Execute ansible playbook
           # Test without -K option to make it non-interactive
-          command: ansible-playbook -i hosts site.yml
+          command: ansible-playbook -i -vvvv hosts site.yml
 
 workflows:
   version: 2
@@ -27,10 +27,11 @@ workflows:
     triggers:
       - schedule:
           # cron: "00 1 * * 1" # Every Monday at 1:00(UTC)
-          cron: "00 5 * * *" # 検証用
+          cron: "40 5 * * *" # 検証用
           filters:
             branches:
               only:
                 - master
+                - circleci-4.0
     jobs:
       - build
