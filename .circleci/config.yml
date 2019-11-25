@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  test:
+  build:
     docker:
       - image: ubuntu:18.04
     steps:
@@ -20,13 +20,13 @@ jobs:
 
 workflows:
   version: 2
-  normal_test_workflow:
+  commit:
     jobs:
-      - test
-  nightly_workflow:
+      - build
+  nightly:
     triggers:
       - schedule:
           cron: "00 5 * * *"
           # cron: "00 1 * * 1" # Every Monday at 1:00(UTC)
     jobs:
-      - test
+      - build
