@@ -30,6 +30,6 @@ workflows:
           filters:
             branches:
               only:
-                - circleci-4.0
+                - master
     jobs:
       - build
