@@ -31,9 +31,14 @@ Ansibleを使ってRedmineを自動インストールするためのプレイブ
 ### Ansibleとgitのインストール
 
 ```
+sudo apt-get update
+
+========== Dockerの場合=========
 apt-get update
-apt-get install -y sudo
-sudo apt-get install -y python-pip libpython-dev git libssl-dev iproute2
+apt-get install -y sudo iproute2
+================================
+
+sudo apt-get install -y python-pip libpython-dev git libssl-dev
 sudo pip install ansible\==2.8.5
 ```
 
@@ -54,6 +59,7 @@ git clone https://github.com/farend/redmine-ubuntu-ansible.git
 ```
 cd redmine-ubuntu-ansible
 ansible-playbook -K -i hosts site.yml
+==> "BECOME password"にsudoを実行するためのパスワードを入力してください。
 ```
 
 10〜20分ほどでインストールが完了します。webブラウザで `http://サーバIPアドレス/redmine` にアクセスしてください。Redmineの画面が表示されるはずです。
